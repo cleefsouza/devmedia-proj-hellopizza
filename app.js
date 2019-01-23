@@ -19,6 +19,29 @@ for (let btn of btnIncrementa) {
 }
 
 /*
+* validação formulario
+*/
+var formPedido = document.forms.pedido;
+// validando formulario com função anonima
+formPedido.addEventListener('submit', function (event) {
+    var cont = 0;
+    var inputs = formPedido.querySelectorAll('input.quantidade'); // lista com todos os inputs onde se tem quantidade como classe
+
+    // percorrendo toda lista verificando so o valor é maior que 0
+    for (let inp of inputs) {
+        if (inp.value > 0) {
+            cont++;
+        }
+    }
+
+    if (cont == 0) {
+        alert('Deve ter haver menos 1 pizza no pedido!');
+        event.preventDefault(); // barrando execução do evento submit
+    }
+});
+
+
+/*
 *  botão decrementa
 */
 var btnDecrementa = document.querySelectorAll('.btn-decrementa');
